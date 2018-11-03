@@ -4,6 +4,10 @@
 	Web: obedalvarado.pw
 	Mail: info@obedalvarado.pw
 	---------------------------*/
+session_start();
+$session_id= session_id();
+//echo "Session: " . $session_id;
+echo "La otra forma: " . htmlspecialchars(SID);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +67,7 @@
 						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
 						 <span class="glyphicon glyphicon-plus"></span> Productos
 						</button>
-                                                <button type="button" class="btn btn-warning" onclick="guardar_pedido()">
+                                                <button type="button" class="btn btn-warning" onclick="guardar_pedido('<?php echo $session_id ?>')">
                                                   <span class="glyphicon glyphicon-save"></span> Guardar
                                                 </button>
  
@@ -186,16 +190,17 @@
 
 		}
 
-    function guardar_pedido ()
+    function guardar_pedido (id)
     {
     //    var precio_venta=$('#precio_venta_'+id).val();
     //    var cantidad=$('#cantidad_'+id).val();
-        alert("Guardando bien dentro");
+       //var sesion=$session_id;
         var id_cliente = $("#customer").val();
         var fecha_pedido=$("#fechapedidocliente").val();
         var fecha_prevista=$("#fechapeprevistaentrega").val();
-
-        var parametros={"id_cliente":id_cliente,"fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista};
+//alert(id);
+        var parametros={"id_cliente":id_cliente,"fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista,"sesion":id};
+//        var parametros={"id_cliente":id_cliente,"fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista};
           $.ajax({
               type: "POST",
               url: "./ajax/GuardaPedCli.php",
