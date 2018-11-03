@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Victor
@@ -24,13 +25,14 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
 if (isset($_POST['cantidad'])){$cantidad=$_POST['cantidad'];}
 if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
 */
-
 // Recogo datos del post
 $id_cliente=$_POST['id_cliente'];
 $fecha_pedido=$_POST['fecha_pedido'];
 $fecha_prevista=$_POST['fecha_prevista'];
 
-echo $fecha_prevista;
+echo "CLIENTE: ".$id_cliente . PHP_EOL;
+echo "-FECHA PEDIDO: " . $fecha_pedido . PHP_EOL;
+echo "-FECHA PREVISTA: " . $fecha_prevista . PHP_EOL;
 
 // Calcular el ID del Pedido
 // $id_pedido=

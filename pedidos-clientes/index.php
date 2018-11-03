@@ -63,7 +63,7 @@
 						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
 						 <span class="glyphicon glyphicon-plus"></span> Productos
 						</button>
-                                                <button type="button" class="btn btn-warning" onclick="guardar_pedido(<?php id ?>)">
+                                                <button type="button" class="btn btn-warning" onclick="guardar_pedido()">
                                                   <span class="glyphicon glyphicon-save"></span> Guardar
                                                 </button>
  
@@ -186,21 +186,22 @@
 
 		}
 
-    function guardar_pedido (id)
+    function guardar_pedido ()
     {
     //    var precio_venta=$('#precio_venta_'+id).val();
     //    var cantidad=$('#cantidad_'+id).val();
+        alert("Guardando bien dentro");
         var id_cliente = $("#customer").val();
         var fecha_pedido=$("#fechapedidocliente").val();
         var fecha_prevista=$("#fechapeprevistaentrega").val();
 
-        var parametros={"id":id,"id_cliente":id_cliente,"cantidad":cantidad, "fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista};
+        var parametros={"id_cliente":id_cliente,"fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista};
           $.ajax({
               type: "POST",
               url: "./ajax/GuardaPedCli.php",
               data: parametros,
               beforeSend: function (objeto) {
-                  $("#resultados").html("Mensaje: Cargando...");
+                  $("#resultados").html("Mensaje: Guardando...");
               },
               success: function (datos) {
                   $("#resultados").html(datos);
