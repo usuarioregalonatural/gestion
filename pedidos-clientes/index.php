@@ -33,30 +33,30 @@ echo "La otra forma: " . htmlspecialchars(SID);
 			<hr>
 			<form class="form-horizontal" role="form" id="datos_pedido">
 				<div class="row">
-				 
-                                  <div class="col-md-3">
-                                  <label for="fechapedidocliente" class="control-label">Fecha Pedido</label>
-                                  <input type="date" class="form-control input-sm" id="fechapedidocliente" >
- 
-				  </div>
+                        <div class="col-md-3">
+                            <label for="fechapedidocliente" class="control-label">Fecha Pedido</label>
+                            <input type="date" class="form-control input-sm" id="fechapedidocliente" >
+                        </div>
 
- 
-				  <div class="col-md-3">
-				  <label for="customer" class="control-label">Selecciona el cliente</label>
-					 <select class="customer form-control" name="customer" id="customer" >
-					</select>
-				  </div>
- 
-                                 <div class="col-md-3">
-                                  <label for="cliente_nuevo" class="control-label"> o mete Cliente Nuevo</label>
-                                  <input type="text" class="form-control input-sm" id="cliente_nuevo" value="" >
-				 </div>
+                        <div class="col-md-3">
+                            <label for="customer" class="control-label">Selecciona el cliente</label>
+					        <select class="customer form-control" name="customer" id="customer" >
+					        </select>
+				        </div>
+                        <div class="col-md-3">
+                            <label for="cliente_nuevo" class="control-label"> o mete Cliente Nuevo</label>
+                            <input type="text" class="form-control input-sm" id="cliente_nuevo" value="" >
+                        </div>
+                        <div class="col-md-3">
+                            <label for="fechaentregacliente" class="control-label">Fecha Prevista Entrega</label>
+                            <input type="date" class="form-control input-sm" id="fechapeprevistaentrega" >
+                        </div>
+                        <div class="col-md-5">
+                            <label for="comentarios" class="control-label">Comentarios</label>
+                            <input type="text-area" class="form-control input-sm" id="comentarios" >
+                        </div>
 
-                                    <div class="col-md-3">
-                                  <label for="fechaentregacliente" class="control-label">Fecha Prevista Entrega</label>
-                                  <input type="date" class="form-control input-sm" id="fechapeprevistaentrega" >
 
-                                  </div>
 
 				</div>
 						
@@ -65,14 +65,13 @@ echo "La otra forma: " . htmlspecialchars(SID);
 				<div class="col-md-12">
 					<div class="pull-right">
 						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
-						 <span class="glyphicon glyphicon-plus"></span> Productos
+						    <span class="glyphicon glyphicon-plus"></span> Productos
 						</button>
-                                                <button type="button" class="btn btn-warning" onclick="guardar_pedido('<?php echo $session_id ?>')">
-                                                  <span class="glyphicon glyphicon-save"></span> Guardar
-                                                </button>
- 
-						<button type="submit" class="btn btn-success">
-						  <span class="glyphicon glyphicon-home"></span> Inicio
+                        <button type="button" class="btn btn-warning" onclick="guardar_pedido('<?php echo $session_id ?>')">
+                            <span class="glyphicon glyphicon-save"></span> Guardar
+                         </button>
+                        <button type="submit" class="btn btn-success">
+                            <span class="glyphicon glyphicon-home"></span> Inicio
 						</button>
 					</div>	
 				</div>
@@ -198,10 +197,9 @@ echo "La otra forma: " . htmlspecialchars(SID);
         var id_cliente = $("#customer").val();
         var fecha_pedido=$("#fechapedidocliente").val();
         var fecha_prevista=$("#fechapeprevistaentrega").val();
-//alert(id);
-        var parametros={"id_cliente":id_cliente,"fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista,"sesion":id};
-//        var parametros={"id_cliente":id_cliente,"fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista};
-          $.ajax({
+        var comentarios=$("#comentarios").val();
+        var parametros={"id_cliente":id_cliente,"fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista,"sesion":id,"comentarios":comentarios};
+         $.ajax({
               type: "POST",
               url: "./ajax/GuardaPedCli.php",
               data: parametros,
@@ -223,7 +221,7 @@ echo "La otra forma: " . htmlspecialchars(SID);
             var customer = $("#customer").val();
             var transporte = $("#transporte").val();
             var condiciones = $("#condiciones").val();
-            var comentarios = $("#comentarios").val();
+       //     var comentarios = $("#comentarios").val();
         if (customer>0){
            // alert("El id: "+id);
            // alert("Guardando");
