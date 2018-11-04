@@ -21,10 +21,10 @@ try {
 }
 
 // Calcular el ID del Pedido que toca
-    $total_pedido_query   = mysqli_query($con, "SELECT COALESCE(MAX(id_pedido),0)FROM pedidos");
-    $row= mysqli_fetch_array($total_pedido_query);
-    $tmp_id_pedido = $row['total'];
-    $id_pedido=$tmp_id_pedido + 1;
+    $id_pedido_query   = mysqli_query($con, "SELECT COALESCE(MAX(id_pedido),0)+1 as id_pedido FROM pedidos");
+    $row= mysqli_fetch_array($id_pedido_query);
+    $tmp_id_pedido = $row['id_pedido'];
+    $id_pedido=$tmp_id_pedido;
     $cod_pedido="PEDCLI-" . str_pad($id_pedido,6,'0',STR_PAD_LEFT);
 
 echo "CLIENTE: ".$id_cliente . PHP_EOL;
@@ -36,8 +36,26 @@ echo "-ID_PEDIDO: " . $id_pedido . PHP_EOL;
 echo "-COD_PEDIDO: " . $cod_pedido . PHP_EOL;
 echo "-COMENTARIOS: " . $comentarios . PHP_EOL;
 
+// Guarda el pedido en la bbdd
+try {
+    $insert_pedido = mysqli_query($con, "INSERT INTO pedidos (id_pedido,cod_pedido,fecha_pedido,fecha_prevista,total_pedido,comentarios) VALUES ('$id_pedido','$cod_pedido','$fecha_pedido','$fecha_prevista','$total_pedido','$comentarios')");
+}catch (Exception $e){
+    echo "No se ha podido guardar el pedido";
+    return false;
+}
 
+$sql_insertar_detalle_pedido="insert into detalle_pedido (id_detalle, id_producto, id_pedido, cantidad, importe)".
+        "select id_tmp as id_detalle, id_producto as id_producto,'". $id_pedido . "' as id_pedido, sum(cantidad_tmp) as cantidad, ".
+        "sum(precio_tmp) as importe from tmp WHERE session_id='".$sesion."' group by id_detalle, id_producto, id_pedido";
 
+// Guarda el detalle del pedido en la bbdd
+$insert_detalle_pedido = mysqli_query($con,$sql_insertar_detalle_pedido );
+
+// Borra lo temporal
+$sql_borra_tmp="delete from tmp";
+mysqli_query($con,$sql_borra_tmp );
+unset($sesion);
+//echo " ----" . $sql_insertar_detalle_pedido;
 
 //$total_pedido_query   = mysqli_query($con, "SELECT sum(precio_tmp) as total from tmp");
 //$row= mysqli_fetch_array($total_pedido_query);
