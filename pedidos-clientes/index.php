@@ -7,7 +7,10 @@
 session_start();
 $session_id= session_id();
 //echo "Session: " . $session_id;
-echo "La otra forma: " . htmlspecialchars(SID);
+//echo "La otra forma: " . htmlspecialchars(SID);
+require_once("./config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
+require_once("./config/conexion.php");//Contiene funcion que conecta a la base de datos
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +20,6 @@ echo "La otra forma: " . htmlspecialchars(SID);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Pedidos Clientes</title>
-	<meta name="author" content="Obed Alvarado">
    <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
@@ -29,7 +31,7 @@ echo "La otra forma: " . htmlspecialchars(SID);
 		  <div class="row-fluid">
 		  
 			<div class="col-md-12">
-			<h2><span class="glyphicon glyphicon-user"></span> Nuevo Pedido Cliente</h2>
+			<h2><span class="glyphicon glyphicon-user"></span> Pedido Cliente</h2>
 			<hr>
 			<form class="form-horizontal" role="form" id="datos_pedido">
 				<div class="row">
@@ -70,7 +72,7 @@ echo "La otra forma: " . htmlspecialchars(SID);
                         <button type="button" class="btn btn-warning" onclick="guardar_pedido('<?php echo $session_id ?>')">
                             <span class="glyphicon glyphicon-save"></span> Guardar
                          </button>
-                        <button type="submit" class="btn btn-success">
+                        <button type="buton" class="btn btn-success" onclick="window.open('../index.php', '_self')">
                             <span class="glyphicon glyphicon-home"></span> Inicio
 						</button>
 					</div>	
@@ -237,7 +239,7 @@ echo "La otra forma: " . htmlspecialchars(SID);
         } else
         {
           //  alert("El id: "+id);
-            alert("Guardando en else");
+          //  alert("Guardando en else");
 
             //  alert("No ha podido grabarse el pedido!!!");
        //  return false;
