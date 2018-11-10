@@ -38,7 +38,7 @@ echo "-COMENTARIOS: " . $comentarios . PHP_EOL;
 
 // Guarda el pedido en la bbdd
 try {
-    $insert_pedido = mysqli_query($con, "INSERT INTO pedidos (id_pedido,cod_pedido,fecha_pedido,fecha_prevista,total_pedido,comentarios) VALUES ('$id_pedido','$cod_pedido','$fecha_pedido','$fecha_prevista','$total_pedido','$comentarios')");
+    $insert_pedido = mysqli_query($con, "INSERT INTO pedidos (id_pedido,cod_pedido,id_cliente,fecha_pedido,fecha_prevista,total_pedido,comentarios) VALUES ('$id_pedido','$cod_pedido','$id_cliente','$fecha_pedido','$fecha_prevista','$total_pedido','$comentarios')");
 }catch (Exception $e){
     echo "No se ha podido guardar el pedido";
     return false;
