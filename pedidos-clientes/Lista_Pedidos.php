@@ -16,8 +16,11 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
     <div class="row-fluid">
 
         <div class="col-md-12">
-            <h2><span class="glyphicon glyphicon-list-alt"></span> Listado Pedidos Clientes</h2>
-
+            <h2><span class="glyphicon glyphicon-list-alt"></span> Listado Pedidos Clientes
+            <button type="submit" class="btn btn-success" onclick="window.open('../index.php','_self')">
+                <span class="glyphicon glyphicon-home"></span> Inicio
+            </button>
+            </h2>
                 <table class="table2">
                     <tr>
                         <th></th>
@@ -32,9 +35,6 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
                     <hr>
                     <div class="col-md-12">
                         <div class="pull-right">
-                              <button type="submit" class="btn btn-success" onclick="window.open('../index.php','_self')">
-                                <span class="glyphicon glyphicon-home"></span> Inicio
-                            </button>
 
                             <?php
 

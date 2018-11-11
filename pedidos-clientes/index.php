@@ -65,8 +65,12 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
 		  <div class="row-fluid">
 		  
 			<div class="col-md-12">
-			<h2><span class="glyphicon glyphicon-user"></span> Pedido Cliente</h2>
-			<hr>
+			<h2><span class="glyphicon glyphicon-user"></span> Pedido Cliente
+                <button type="submit" class="btn btn-success" onclick="window.open('../index.php','_self')">
+                    <span class="glyphicon glyphicon-home"></span> Inicio
+                </button>
+            </h2>
+                <hr>
 			<form class="form-horizontal" role="form" id="datos_pedido">
 				<div class="row">
                         <div class="col-md-3">
@@ -114,12 +118,9 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
 						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
 						    <span class="glyphicon glyphicon-plus"></span> Productos
 						</button>
-                        <button type="button" class="btn btn-warning" onclick="guardar_pedido('<?php echo $session_id ?>')">
+                        <button type="button" class="btn btn-primary" onclick="guardar_pedido('<?php echo $session_id ?>')">
                             <span class="glyphicon glyphicon-save"></span> Guardar
                          </button>
-                        <button type="buton" class="btn btn-success" onclick="window.open('../index.php', '_self')">
-                            <span class="glyphicon glyphicon-home"></span> Inicio
-						</button>
                         <button type="button" class="btn btn-warning" onclick="ver_detalle_pedido('<?php echo $id_pedido_ver ?>')">
                             <span class="glyphicon glyphicon-save"></span> Ver detalles
                         </button>
