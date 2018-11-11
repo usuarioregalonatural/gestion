@@ -10,7 +10,39 @@ $session_id= session_id();
 //echo "La otra forma: " . htmlspecialchars(SID);
 require_once("./config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 require_once("./config/conexion.php");//Contiene funcion que conecta a la base de datos
+//$con=@mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+$es_edicion="NO";
+if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
+{
+    $es_edicion="SI";
+    $id_pedido_ver=intval($_GET['id_pedido_ver']);
+ //   echo "Editar el pedido:" . $id_pedido_ver;
 
+    $sql=mysqli_query($con, "SELECT 
+                                        pedidos.id_pedido, pedidos.cod_pedido, clientes.id_cliente, clientes.nombre_cliente,
+                                        pedidos.fecha_pedido, pedidos.fecha_prevista, pedidos.total_pedido, pedidos.comentarios
+                                        FROM pedidos  LEFT JOIN clientes 
+                                        ON pedidos.id_cliente=clientes.id_cliente where id_pedido='$id_pedido_ver'");
+    while ($row=mysqli_fetch_array($sql)) {
+        $id_pedido = $row["id_pedido"];
+        $cod_pedido = $row["cod_pedido"];
+        $fecha_pedido = $row["fecha_pedido"];
+        $fecha_prevista = $row["fecha_prevista"];
+        $id_cliente = $row["id_cliente"];
+        $nombre_cliente = $row["nombre_cliente"];
+        $total_pedido = $row["total_pedido"];
+        $comentarios = $row["comentarios"];
+
+  //      echo $nombre_cliente;
+    }
+
+
+
+
+
+
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,12 +71,26 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
                             <label for="fechapedidocliente" class="control-label">Fecha Pedido</label>
                             <input type="date" class="form-control input-sm" id="fechapedidocliente" >
                         </div>
+                    <?php
+                    if ($es_edicion=="SI"){
+                   //     echo "Es edicion";
+                        ?>
+                    <div class="col-md-3">
+                        <label for="customer" class="control-label">Selecciona el cliente</label>
+                        <input type="text-area" class="form-control input-sm" name ="customer_edicion" id="customer_edicion" >
 
-                        <div class="col-md-3">
-                            <label for="customer" class="control-label">Selecciona el cliente</label>
-					        <select class="customer form-control" name="customer" id="customer" >
-					        </select>
-				        </div>
+                    </div>
+                    <?php
+                    }else {
+                       ?>
+                    <div class="col-md-3">
+                        <label for="customer" class="control-label">Selecciona el cliente</label>
+                        <select class="customer form-control" name="customer" id="customer" >
+                        </select>
+                    </div>
+                <?php
+                    }
+                    ?>
                         <div class="col-md-3">
                             <label for="cliente_nuevo" class="control-label"> o mete Cliente Nuevo</label>
                             <input type="text" class="form-control input-sm" id="cliente_nuevo" value="" >
@@ -55,14 +101,11 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
                         </div>
                         <div class="col-md-5">
                             <label for="comentarios" class="control-label">Comentarios</label>
-                            <input type="text-area" class="form-control input-sm" id="comentarios" >
+                            <input type="text-area" class="form-control input-sm" name ="comentarios" id="comentarios" >
                         </div>
+		</div>
 
 
-
-				</div>
-						
-				
 				<hr>
 				<div class="col-md-12">
 					<div class="pull-right">
@@ -118,9 +161,37 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+
 	<script>
+         $(document).ready(function() {
+             var pEsEdicion='<?php echo $es_edicion?>'; // Compruebo si vengo para editar
+             if (pEsEdicion="SI") {
+                 var pComentarios='<?php echo $comentarios?>';
+                 var pId_Pedido='<?php echo $id_pedido?>';
+                 var pFechaPedido='<?php echo $fecha_pedido?>';
+                 var pFechaPrevista='<?php echo $fecha_prevista?>';
+                 var pId_Cliente='<?php echo $id_cliente?>';
+                 var pCod_Pedido='<?php echo $cod_pedido?>';
+                 var pTotal_Pedido='<?php echo $total_pedido?>';
+                 var pNombre_Cliente='<?php echo $nombre_cliente?>';
+
+                 $("#comentarios").val(pComentarios);
+                 $("#fechapedidocliente").val(pFechaPedido);
+                 $("#customer").val(pNombre_Cliente);
+                 $("#customer_edicion").val(pNombre_Cliente)
+                 $("#fechapeprevistaentrega").val(pFechaPrevista);
+     /*            $("#comentarios").val(pComentarios);
+                 $("#comentarios").val(pComentarios);
+                 $("#comentarios").val(pComentarios);
+*/
+             }
+        });
+    </script>
+
+    <script>
 		$(document).ready(function(){
-			load(1);
+          //  $("#comentarios").val('Pepillo');
+            load(1);
 		});
 
 		function load(page){
@@ -217,7 +288,8 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
     }
 
 
-
+//$("#comentarios").text("Prueba");
+//	alert("Por el limbo");
     /***** Guarda los datos en la tabla *****/
          $("#datos_pedido").submit(function(){
             var customer = $("#customer").val();
@@ -290,5 +362,7 @@ $(document).ready(function() {
 });
 });
 </script>
+
+
   </body>
 </html>
