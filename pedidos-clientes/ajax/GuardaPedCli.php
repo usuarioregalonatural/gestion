@@ -6,6 +6,9 @@ $id_cliente=$_POST['id_cliente'];
 $fecha_pedido=$_POST['fecha_pedido'];
 $fecha_prevista=$_POST['fecha_prevista'];
 $comentarios=$_POST['comentarios'];
+$esEdicion=$_POST['esEdicion'];
+$id_ver_pedido=$_POST['id_ver_pedido'];
+echo "El cliente para guardar es: " .$id_cliente;
 
 try {
     require_once("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -25,6 +28,10 @@ try {
     $row= mysqli_fetch_array($id_pedido_query);
     $tmp_id_pedido = $row['id_pedido'];
     $id_pedido=$tmp_id_pedido;
+    if (isset($_POST['id_ver_pedido']))
+    {
+        $id_pedido=$id_ver_pedido;
+    }
     $cod_pedido="PEDCLI-" . str_pad($id_pedido,6,'0',STR_PAD_LEFT);
 
 echo "CLIENTE: ".$id_cliente . PHP_EOL;
@@ -35,10 +42,22 @@ echo "-SESSION: " . $sesion . PHP_EOL;
 echo "-ID_PEDIDO: " . $id_pedido . PHP_EOL;
 echo "-COD_PEDIDO: " . $cod_pedido . PHP_EOL;
 echo "-COMENTARIOS: " . $comentarios . PHP_EOL;
+echo "-ESEDICION: " . $esEdicion . PHP_EOL;
 
 // Guarda el pedido en la bbdd
 try {
-    $insert_pedido = mysqli_query($con, "INSERT INTO pedidos (id_pedido,cod_pedido,id_cliente,fecha_pedido,fecha_prevista,total_pedido,comentarios) VALUES ('$id_pedido','$cod_pedido','$id_cliente','$fecha_pedido','$fecha_prevista','$total_pedido','$comentarios')");
+    if (isset($_POST['id_ver_pedido']))
+    {
+            $sql_borra_pedido="delete from pedidos where id_pedido='" . $id_ver_pedido . "'";
+            $sql_borra_detalle_pedido="delete from detalle_pedido where id_pedido='" . $id_ver_pedido . "'";
+            mysqli_query($con,$sql_borra_pedido );
+            mysqli_query($con,$sql_borra_detalle_pedido );
+
+    //        $insert_pedido = mysqli_query($con, "INSERT INTO pedidos (id_pedido,cod_pedido,id_cliente,fecha_pedido,fecha_prevista,total_pedido,comentarios) VALUES ('$id_ver_pedido','$cod_pedido','$id_cliente','$fecha_pedido','$fecha_prevista','$total_pedido','$comentarios')");
+    }
+
+    $insert_pedido = mysqli_query($con, "INSERT INTO pedidos (id_pedido,cod_pedido,id_cliente,fecha_pedido,fecha_prevista,total_pedido,comentarios) 
+                                                VALUES ('$id_pedido','$cod_pedido','$id_cliente','$fecha_pedido','$fecha_prevista','$total_pedido','$comentarios')");
 }catch (Exception $e){
     echo "No se ha podido guardar el pedido";
     return false;

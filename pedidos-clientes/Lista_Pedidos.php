@@ -56,10 +56,10 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
 
         ?>
         <tr>
-        <td >
-            <span class="pull-right"><a href="#" onclick=""><i class="glyphicon glyphicon-zoom-in"></i></a></span>
+        <td id="<?php echo $id_pedido?>">
+            <span class="pull-right"><a href="./index.php?id_pedido_ver=<?php echo $id_pedido?>&id_ver_cliente=<?php echo $id_cliente?>" ><i class="glyphicon glyphicon-zoom-in"></i></a></span>
         </td>
-        <td ><?php echo $cod_pedido ?></td>
+        <td><?php echo $cod_pedido ?></td>
         <td ><?php echo $fecha_pedido ?></td>
         <td ><?php echo $fecha_prevista ?></td>
         <td ><?php echo $nombre_cliente ?></td>
@@ -84,3 +84,39 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
         </div>
 
     </div></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/VentanaCentrada.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+
+<script>
+function ver_pedido (id_pedido_ver)
+{
+//    var precio_venta=$('#precio_venta_'+id).val();
+//    var cantidad=$('#cantidad_'+id).val();
+//var sesion=$session_id;
+var id_cliente = $("#customer").val();
+var fecha_pedido=$("#fechapedidocliente").val();
+var fecha_prevista=$("#fechapeprevistaentrega").val();
+var comentarios=$("#comentarios").val();
+var pId_Cliente='<?php echo $id_cliente?>';
+var parametros={"id_pedido_ver":id_pedido_ver, "id_ver_cliente":pId_Cliente};
+alert("Dentro de la funcion de ver pedido");
+$.ajax({
+type: "GET",
+url: "index.php",
+data: parametros,
+beforeSend: function (objeto) {
+$("#resultados").html("Buscando pedido...");
+},
+success: function (datos) {
+$("#resultados").html(datos);
+}
+});
+
+
+}
+
+</script>

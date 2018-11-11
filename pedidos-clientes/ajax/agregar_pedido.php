@@ -24,6 +24,18 @@ if (isset($_GET['id']))//codigo elimina un elemento del array
 $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 }
 
+///////////////////////////////////////////////////
+// Si estamos en edicion de pedido .....
+if (isset($_GET['id_ver_pedido']))//codigo elimina un elemento del array
+{
+    $id_ver_pedido=intval($_GET['id_ver_pedido']);
+    echo "Estamos en edicion de pedidos";
+ //   $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
+}
+///////////////////////////////////////////////////
+
+
+
 ?>
 <table class="table">
 <tr>
@@ -37,7 +49,29 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 <?php
 	$sumador_total=0;
 	#$sql=mysqli_query($con, "select * from productos, tmp where productos.id_producto=tmp.id_producto and tmp.session_id='".$session_id."'");
-	$sql=mysqli_query($con, "select * from ps_productos, tmp where ps_productos.id_producto=tmp.id_producto and tmp.session_id='".$session_id."'");
+
+//	$sql=mysqli_query($con, "select * from ps_productos, tmp where ps_productos.id_producto=tmp.id_producto and tmp.session_id='".$session_id."'");
+
+///////////////////////////////////////////////////
+// Si estamos en edicion de pedido .....
+if (isset($_GET['id_ver_pedido']))//codigo elimina un elemento del array
+{
+    $id_ver_pedido=intval($_GET['id_ver_pedido']);
+    echo "Estamos en edicion de pedidos";
+    $sql_borra_tmp="delete from tmp";
+    mysqli_query($con,$sql_borra_tmp );
+    $sql_inserta_det_tmp="insert into tmp (id_tmp, id_producto, cantidad_tmp, precio_tmp, session_id) 
+                          select id_detalle, id_producto, cantidad, importe,'".$session_id."' from detalle_pedido where id_pedido='". $id_ver_pedido . "'";
+    mysqli_query($con,$sql_inserta_det_tmp );
+   // echo $sql_inserta_det_tmp;
+    //$sql=mysqli_query($con, "select * from ps_productos, detalle_pedido where ps_productos.id_producto=detalle_pedido.id_producto and detalle_pedido.id_pedido='".$id_ver_pedido."'");
+    //$sql=mysqli_query($con, "insert into  from ps_productos, detalle_pedido where ps_productos.id_producto=detalle_pedido.id_producto and detalle_pedido.id_pedido='".$id_ver_pedido."'");
+
+}
+$sql=mysqli_query($con, "select * from ps_productos, tmp where ps_productos.id_producto=tmp.id_producto and tmp.session_id='".$session_id."'");
+///////////////////////////////////////////////////
+
+//$sql=mysqli_query($con, "select * from ps_productos, tmp where ps_productos.id_producto=tmp.id_producto ");
 	while ($row=mysqli_fetch_array($sql))
 	{
 	$id_tmp=$row["id_tmp"];
