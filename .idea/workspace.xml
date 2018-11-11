@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3dc6578-cd4c-4460-bd3e-fcf57347c4ec" name="Default Changelist" comment="Se muestran los datos del pedido para seleccionar. Solo datos de pedido, no el detalle.">
+    <list default="true" id="f3dc6578-cd4c-4460-bd3e-fcf57347c4ec" name="Default Changelist" comment="Anulados trazas para debugar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pedidos-clientes/ajax/agregar_pedido.php" beforeDir="false" afterPath="$PROJECT_DIR$/pedidos-clientes/ajax/agregar_pedido.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedidos-clientes/ajax/productos_pedido.php" beforeDir="false" afterPath="$PROJECT_DIR$/pedidos-clientes/ajax/productos_pedido.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pedidos-clientes/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pedidos-clientes/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,27 +57,44 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51" />
+            <state relative-caret-position="198">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Lista_Pedidos.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pedidos-clientes/Lista_Pedidos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1068">
+              <caret line="15" column="26" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pedidos-clientes/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="197" column="16" lean-forward="true" selection-start-line="197" selection-start-column="16" selection-end-line="197" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GuardaPedCli.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pedidos-clientes/ajax/GuardaPedCli.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-65">
+              <caret line="45" column="2" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="agregar_pedido.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pedidos-clientes/ajax/agregar_pedido.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="124" column="99" selection-start-line="124" selection-start-column="99" selection-end-line="124" selection-end-column="99" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="productos_pedido.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pedidos-clientes/ajax/productos_pedido.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="102" lean-forward="true" selection-start-line="101" selection-end-line="102" />
-              <folding>
-                <element signature="n#style#0;n#th#4;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -106,13 +122,14 @@
       <find>edicion</find>
       <find>agregar</find>
       <find>inicio</find>
+      <find>echo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="04-Imagenes-Productos" />
       </map>
     </option>
   </component>
@@ -123,12 +140,12 @@
         <option value="$PROJECT_DIR$/pedidos-clientes/ajax/Lista_Pedidos.php" />
         <option value="$PROJECT_DIR$/css/estilos.css" />
         <option value="$PROJECT_DIR$/pedidos-clientes/ajax/mostrar-pedido.php" />
-        <option value="$PROJECT_DIR$/pedidos-clientes/ajax/GuardaPedCli.php" />
         <option value="$PROJECT_DIR$/pedidos-clientes/Lista_Pedidos.php" />
-        <option value="$PROJECT_DIR$/pedidos-clientes/index.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/pedidos-clientes/ajax/productos_pedido.php" />
+        <option value="$PROJECT_DIR$/pedidos-clientes/ajax/GuardaPedCli.php" />
         <option value="$PROJECT_DIR$/pedidos-clientes/ajax/agregar_pedido.php" />
+        <option value="$PROJECT_DIR$/pedidos-clientes/index.php" />
       </list>
     </option>
   </component>
@@ -281,11 +298,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541939442155</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Anulados trazas para debugar">
+      <created>1541960546679</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1541960546680</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51705000" />
+    <option name="totallyTimeSpent" value="55613000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -350,7 +374,8 @@
     <MESSAGE value="Se incluye directorio CSS" />
     <MESSAGE value="Se muestran los datos del pedido para seleccionar. Solo datos de pedido, no el detalle." />
     <MESSAGE value="Ya se puede navegar por las pantallas de inicio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ya se puede navegar por las pantallas de inicio" />
+    <MESSAGE value="Anulados trazas para debugar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Anulados trazas para debugar" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -608,13 +633,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pedidos-clientes/ajax/mostrar-pedido.php" />
-    <entry file="file://$PROJECT_DIR$/pedidos-clientes/ajax/GuardaPedCli.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pedidos-clientes/config/conexion.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -625,24 +643,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pedidos-clientes/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="120" column="68" selection-start-line="120" selection-start-column="68" selection-end-line="120" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/estilos.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
           <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pedidos-clientes/Lista_Pedidos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -656,16 +660,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pedidos-clientes/Lista_Pedidos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1068">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pedidos-clientes/ajax/GuardaPedCli.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-65">
+          <caret line="45" column="2" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pedidos-clientes/ajax/agregar_pedido.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="124" column="99" selection-start-line="124" selection-start-column="99" selection-end-line="124" selection-end-column="99" />
+        <state relative-caret-position="187">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pedidos-clientes/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="197" column="16" lean-forward="true" selection-start-line="197" selection-start-column="16" selection-end-line="197" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51" />
+        <state relative-caret-position="198">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+        </state>
       </provider>
     </entry>
   </component>

@@ -13,10 +13,16 @@ if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-	
+
+/**** borra previamente  lo que haya en tmp ****/
+//echo "GET: " . $_GET['id_ver_pedido'];
+//echo "POST: " . $_POST['id_ver_pedido'];
+
+
+/***********************************************/
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
+        $insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array
 {

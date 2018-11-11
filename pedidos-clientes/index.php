@@ -188,9 +188,14 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
      /*            $("#comentarios").val(pComentarios);
                  $("#comentarios").val(pComentarios);
                  $("#comentarios").val(pComentarios);
-        */
+        */       ver_detalle_pedido(pId_Pedido);
 
-             }
+             } else {
+             //     alert('Borrando TMP!!!');
+                   <?php     $sql_borra_tmp = "delete from tmp";
+                        mysqli_query($con, $sql_borra_tmp);
+                        ?>
+               }
         });
     </script>
 
@@ -275,7 +280,7 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
             url: "./ajax/agregar_pedido.php",
             data: "id_ver_pedido=" + id,
             beforeSend: function (objeto) {
-                $("#resultados").html("Mensaje: Guardando...");
+                $("#resultados").html("Mostrando Artículos...");
             },
             success: function (datos) {
                 $("#resultados").html(datos);
