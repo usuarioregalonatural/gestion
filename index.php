@@ -25,24 +25,23 @@ require_once("./pedidos-clientes/config/conexion.php");//Contiene funcion que co
                 <h2><img src="imagenes/Logo-20180921-255x47.jpg"> Gestion</h2>
                 <hr>
                 <div class="col-md-12">
-                    <div class="pull-left">
+                      <div class="pull-left">
                         <button type="submit" class="btn btn-primary" onclick="window.open('./pedidos-clientes/index.php', '_self')">
                             <span class="glyphicon glyphicon glyphicon-pencil"></span> Crear Pedido Cliente
                         </button>
                         <button type="submit" class="btn btn-primary">
                             <span class="glyphicon glyphicon glyphicon-pencil"></span> Crear Pedido Proveedor
                         </button>
-                    </div>
+                      </div>
 
                     <div class="pull-left">
-                        <button type="submit" class="btn btn-success" onclick="window.open('./pedidos-clientes/Lista_Pedidos.php', '_self')">
+                      <button type="submit" class="btn btn-success" onclick="window.open('./pedidos-clientes/Lista_Pedidos.php', '_self')">
                             <span class="glyphicon  glyphicon-list-alt"></span> Ver Pedidos Cliente
-                        </button>
-                        <button type="submit" class="btn btn-success">
+                      </button>
+                      <button type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-list-alt"></span> Ver Pedidos Proveedor
-                        </button>
+                      </button>
                     </div>
-
                         <?php
 
 
