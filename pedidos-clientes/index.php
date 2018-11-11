@@ -16,6 +16,8 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
 {
     $es_edicion="SI";
     $id_pedido_ver=intval($_GET['id_pedido_ver']);
+    $id_ver_cliente=$_GET['id_ver_cliente'];
+
  //   echo "Editar el pedido:" . $id_pedido_ver;
 
     $sql=mysqli_query($con, "SELECT 
@@ -118,6 +120,9 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
                         <button type="buton" class="btn btn-success" onclick="window.open('../index.php', '_self')">
                             <span class="glyphicon glyphicon-home"></span> Inicio
 						</button>
+                        <button type="button" class="btn btn-warning" onclick="ver_detalle_pedido('<?php echo $id_pedido_ver ?>')">
+                            <span class="glyphicon glyphicon-save"></span> Ver detalles
+                        </button>
 					</div>	
 				</div>
 			</form>
@@ -161,11 +166,10 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
-
 	<script>
          $(document).ready(function() {
              var pEsEdicion='<?php echo $es_edicion?>'; // Compruebo si vengo para editar
-             if (pEsEdicion="SI") {
+             if (pEsEdicion=="SI") {
                  var pComentarios='<?php echo $comentarios?>';
                  var pId_Pedido='<?php echo $id_pedido?>';
                  var pFechaPedido='<?php echo $fecha_pedido?>';
@@ -183,7 +187,8 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
      /*            $("#comentarios").val(pComentarios);
                  $("#comentarios").val(pComentarios);
                  $("#comentarios").val(pComentarios);
-*/
+        */
+
              }
         });
     </script>
@@ -261,6 +266,22 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
 			});
 
 		}
+    function ver_detalle_pedido(id) {
+      //  alert("Antes del ajax");
+
+        $.ajax({
+            type: "GET",
+            url: "./ajax/agregar_pedido.php",
+            data: "id_ver_pedido=" + id,
+            beforeSend: function (objeto) {
+                $("#resultados").html("Mensaje: Guardando...");
+            },
+            success: function (datos) {
+                $("#resultados").html(datos);
+            }
+        });
+      //  alert("despues del ajax");
+    }
 
     function guardar_pedido (id)
     {
@@ -271,8 +292,14 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
         var fecha_pedido=$("#fechapedidocliente").val();
         var fecha_prevista=$("#fechapeprevistaentrega").val();
         var comentarios=$("#comentarios").val();
-        var parametros={"id_cliente":id_cliente,"fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista,"sesion":id,"comentarios":comentarios};
-         $.ajax({
+        var pId_Pedido='<?php echo $id_pedido?>';
+        var pId_Ver_Cliente='<?php echo $id_ver_cliente?>';
+        var parametros={"id_cliente":id_cliente,"fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista,"sesion":id,"comentarios":comentarios, "esEdicion":0};
+        var pEsEdicion='<?php echo $es_edicion?>'; // Compruebo si vengo para editar
+        if (pEsEdicion=="SI") {
+            var parametros={"id_cliente":pId_Ver_Cliente,"fecha_pedido":fecha_pedido,"fecha_prevista":fecha_prevista,"sesion":id,"comentarios":comentarios, "esEdicion":1, "id_ver_pedido":pId_Pedido};
+        }
+            $.ajax({
               type: "POST",
               url: "./ajax/GuardaPedCli.php",
               data: parametros,

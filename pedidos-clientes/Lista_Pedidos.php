@@ -57,7 +57,7 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
         ?>
         <tr>
         <td id="<?php echo $id_pedido?>">
-            <span class="pull-right"><a href="./index.php?id_pedido_ver=<?php echo $id_pedido?>" ><i class="glyphicon glyphicon-zoom-in"></i></a></span>
+            <span class="pull-right"><a href="./index.php?id_pedido_ver=<?php echo $id_pedido?>&id_ver_cliente=<?php echo $id_cliente?>" ><i class="glyphicon glyphicon-zoom-in"></i></a></span>
         </td>
         <td><?php echo $cod_pedido ?></td>
         <td ><?php echo $fecha_pedido ?></td>
@@ -101,7 +101,8 @@ var id_cliente = $("#customer").val();
 var fecha_pedido=$("#fechapedidocliente").val();
 var fecha_prevista=$("#fechapeprevistaentrega").val();
 var comentarios=$("#comentarios").val();
-var parametros={"id_pedido_ver":id_pedido_ver};
+var pId_Cliente='<?php echo $id_cliente?>';
+var parametros={"id_pedido_ver":id_pedido_ver, "id_ver_cliente":pId_Cliente};
 alert("Dentro de la funcion de ver pedido");
 $.ajax({
 type: "GET",
