@@ -8,7 +8,7 @@ $fecha_prevista=$_POST['fecha_prevista'];
 $comentarios=$_POST['comentarios'];
 $esEdicion=$_POST['esEdicion'];
 $id_ver_pedido=$_POST['id_ver_pedido'];
-echo "El cliente para guardar es: " .$id_cliente;
+//echo "El cliente para guardar es: " .$id_cliente;
 
 try {
     require_once("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -34,7 +34,7 @@ try {
     }
     $cod_pedido="PEDCLI-" . str_pad($id_pedido,6,'0',STR_PAD_LEFT);
 
-echo "CLIENTE: ".$id_cliente . PHP_EOL;
+/*echo "CLIENTE: ".$id_cliente . PHP_EOL;
 echo "-FECHA PEDIDO: " . $fecha_pedido . PHP_EOL;
 echo "-FECHA PREVISTA: " . $fecha_prevista . PHP_EOL;
 echo "-TOTAL PEDIDO: " . $total_pedido . PHP_EOL;
@@ -43,7 +43,7 @@ echo "-ID_PEDIDO: " . $id_pedido . PHP_EOL;
 echo "-COD_PEDIDO: " . $cod_pedido . PHP_EOL;
 echo "-COMENTARIOS: " . $comentarios . PHP_EOL;
 echo "-ESEDICION: " . $esEdicion . PHP_EOL;
-
+*/
 // Guarda el pedido en la bbdd
 try {
     if (isset($_POST['id_ver_pedido']))

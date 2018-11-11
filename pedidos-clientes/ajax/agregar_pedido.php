@@ -29,7 +29,7 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 if (isset($_GET['id_ver_pedido']))//codigo elimina un elemento del array
 {
     $id_ver_pedido=intval($_GET['id_ver_pedido']);
-    echo "Estamos en edicion de pedidos";
+//    echo "Estamos en edicion de pedidos";
  //   $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 }
 ///////////////////////////////////////////////////
@@ -59,7 +59,7 @@ if (isset($_GET['id_ver_pedido']))//codigo elimina un elemento del array
 if (isset($_GET['id_ver_pedido']))//codigo elimina un elemento del array
 {
     $id_ver_pedido=intval($_GET['id_ver_pedido']);
-    echo "Estamos en edicion de pedidos";
+//    echo "Estamos en edicion de pedidos";
     $sql_borra_tmp="delete from tmp";
     mysqli_query($con,$sql_borra_tmp );
     $sql_inserta_det_tmp="insert into tmp (id_tmp, id_producto, cantidad_tmp, precio_tmp, session_id) 
