@@ -1,3 +1,8 @@
+<?php
+ini_set('display_errors', 'On');
+ini_set('error_reporting', E_ALL);
+?>
+
 <html>
 
   <head>
@@ -8,6 +13,7 @@
       <link href="../css/estilos.css" type="text/css" rel="stylesheet">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
       <link href="../css/estilos.css" type="text/css" rel="stylesheet">
+
 
   </head>
 

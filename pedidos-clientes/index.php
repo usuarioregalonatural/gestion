@@ -58,6 +58,7 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
 	<link rel=icon href='http://obedalvarado.pw/img/logo-icon.png' sizes="32x32" type="image/png">
+
   </head>
   <body>
   
@@ -76,7 +77,7 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
                         <div class="col-md-3">
                             <label for="fechapedidocliente" class="control-label">Fecha Pedido</label>
                             <input type="date" class="form-control input-sm" id="fechapedidocliente" >
-                        </div>
+                       </div>
                     <?php
                     if ($es_edicion=="SI"){
                    //     echo "Es edicion";
@@ -205,6 +206,8 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
     <script>
 		$(document).ready(function(){
           //  $("#comentarios").val('Pepillo');
+        //   $( "#fechapedidocliente" ).datepicker({dateFormat:"dd/mm/yy"}).datepicker("setDate",new Date());
+      //      $("#fechapedidocliente").val();
             load(1);
 		});
 

@@ -15,7 +15,7 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
 <div class="container">
     <div class="row-fluid">
 
-        <div class="col-md-12">
+        <div class="col-md-12" id="Tabla">
             <h2><span class="glyphicon glyphicon-list-alt"></span> Listado Pedidos Clientes
             <button type="submit" class="btn btn-success" onclick="window.open('../index.php','_self')">
                 <span class="glyphicon glyphicon-home"></span> Inicio
@@ -66,6 +66,10 @@ require_once("./config/conexion.php");//Contiene funcion que conecta a la base d
         <td class="listado-pedidos-numeros"><?php echo $total_pedido . " €" ?></td>
         <td "><?php echo $comentarios ?></td>
 
+        <td><button type="submit" class="btn btn-danger" onclick="elimina_pedido(<?php echo $id_pedido?>)">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
     </tr>
 
 
@@ -103,7 +107,7 @@ var fecha_prevista=$("#fechapeprevistaentrega").val();
 var comentarios=$("#comentarios").val();
 var pId_Cliente='<?php echo $id_cliente?>';
 var parametros={"id_pedido_ver":id_pedido_ver, "id_ver_cliente":pId_Cliente};
-alert("Dentro de la funcion de ver pedido");
+//alert("Dentro de la funcion de ver pedido");
 $.ajax({
 type: "GET",
 url: "index.php",
@@ -112,11 +116,56 @@ beforeSend: function (objeto) {
 $("#resultados").html("Buscando pedido...");
 },
 success: function (datos) {
-$("#resultados").html(datos);
+    $("#Tabla").load(" #Tabla");
+    $("#resultados").html(datos);
 }
 });
 
 
+}
+
+function elimina_pedido (id_pedido_ver) {
+//    var precio_venta=$('#precio_venta_'+id).val();
+//    var cantidad=$('#cantidad_'+id).val();
+//var sesion=$session_id;
+    var id_cliente = $("#customer").val();
+    var fecha_pedido = $("#fechapedidocliente").val();
+    var fecha_prevista = $("#fechapeprevistaentrega").val();
+    var comentarios = $("#comentarios").val();
+    var pId_Cliente = '<?php echo $id_cliente?>';
+    var parametros = {"id_pedido_ver": id_pedido_ver};
+ //   alert("Dentro de la funcion de eliminar pedido" + id_pedido_ver);
+    DeletePedDB(id_pedido_ver);
+    $.ajax({
+        type: "POST",
+        url: "./Lista_Pedidos.php",
+        data: parametros,
+        beforeSend: function (objeto) {
+            $("#resultados").html("Eliminando pedido...");
+        },
+        success: function (datos) {
+            $("#Tabla").load(" #Tabla");
+            $("#resultados").html(datos);
+        }
+    });
+}
+function DeletePedDB(id_pedido) {
+  //  alert("En la funcion principal");
+    var parametros = {"id_pedido": id_pedido};
+    $.ajax({
+        type: "POST",
+        url: "./ajax/BorraPedido.php",
+        data: parametros,
+        beforeSend: function (objeto) {
+            $("#resultados").html("Eliminando pedido...");
+        },
+        success: function (datos) {
+   //         alert("Ha ido bien");
+        },
+        error: function (xhr,status) {
+    //        alert("Se ha producido un error");
+        }
+    })
 }
 
 </script>
