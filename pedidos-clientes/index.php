@@ -82,7 +82,7 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
                    //     echo "Es edicion";
                         ?>
                     <div class="col-md-3">
-                        <label for="customer" class="control-label">Selecciona el cliente</label>
+                        <label for="customer" class="control-label">Cliente</label>
                         <input type="text-area" class="form-control input-sm" name ="customer_edicion" id="customer_edicion" >
 
                     </div>
@@ -94,13 +94,16 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
                         <select class="customer form-control" name="customer" id="customer" >
                         </select>
                     </div>
+                    <div class="col-md-3">
+                        <label for="cliente_nuevo" class="control-label"> o mete Cliente Nuevo</label>
+                        <button type="button" class="btn btn-warning" onclick="agregar_cliente(1)">
+                            <span class="glyphicon glyphicon-plus"></span> Nuevo Cliente
+                        </button>
+                    </div>
+
                 <?php
                     }
                     ?>
-                        <div class="col-md-3">
-                            <label for="cliente_nuevo" class="control-label"> o mete Cliente Nuevo</label>
-                            <input type="text" class="form-control input-sm" id="cliente_nuevo" value="" >
-                        </div>
                         <div class="col-md-3">
                             <label for="fechaentregacliente" class="control-label">Fecha Prevista Entrega</label>
                             <input type="date" class="form-control input-sm" id="fechapeprevistaentrega" >
@@ -115,15 +118,15 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
 				<hr>
 				<div class="col-md-12">
 					<div class="pull-right">
-						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="Productos">
 						    <span class="glyphicon glyphicon-plus"></span> Productos
 						</button>
                         <button type="button" class="btn btn-primary" onclick="guardar_pedido('<?php echo $session_id ?>')">
                             <span class="glyphicon glyphicon-save"></span> Guardar
                          </button>
-                        <button type="button" class="btn btn-warning" onclick="ver_detalle_pedido('<?php echo $id_pedido_ver ?>')">
+                 <!--       <button type="button" class="btn btn-warning" onclick="ver_detalle_pedido('<?php echo $id_pedido_ver ?>')">
                             <span class="glyphicon glyphicon-save"></span> Ver detalles
-                        </button>
+                        </button> -->
 					</div>	
 				</div>
 			</form>
@@ -319,9 +322,28 @@ if (isset($_GET['id_pedido_ver']))//codigo elimina un elemento del array
 
 
     }
+    function agregar_cliente (id)
+    {
+      //  var parametros={"id":id,"precio_venta":precio_venta,"cantidad":cantidad};
+        var parametros={"id":id};
+   //     alert("Dentro de agregar cliente");
+        $.ajax({
+            type: "POST",
+            url: "./ajax/agregar_cliente.php",
+            data: parametros,
+            beforeSend: function(objeto){
+                $("#resultados").html("Mensaje: Cargando...");
+            },
+            success:
+                function(datos){$("#resultados").html(datos);}
+              //  alert("Vuelta");
+        });
+    }
 
 
-//$("#comentarios").text("Prueba");
+
+
+        //$("#comentarios").text("Prueba");
 //	alert("Por el limbo");
     /***** Guarda los datos en la tabla *****/
          $("#datos_pedido").submit(function(){
@@ -395,6 +417,8 @@ $(document).ready(function() {
 });
 });
 </script>
+
+
 
 
   </body>
